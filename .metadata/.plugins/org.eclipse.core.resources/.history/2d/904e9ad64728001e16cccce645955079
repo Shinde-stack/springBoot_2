@@ -1,0 +1,37 @@
+package com.example.demoApp.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demoApp.entities.User;
+import com.example.demoApp.services.UserService;
+import com.example.demoAppservicesImpl.UserServiceImpl;
+
+@RestController
+@RequestMapping("/user")
+public class UserController {
+
+	@Autowired
+	private UserService userService;
+	
+//-------------------------------------------------------------
+
+//http://localhost:7070/user/
+	@PostMapping(value="/")
+	public User createUser(@RequestBody User user) {
+		
+		User createdUser=this.userService.createUser(user);
+		
+		return createdUser;
+	
+	}
+
+	
+	
+	
+	
+	
+}

@@ -1,0 +1,16 @@
+package com.example.demoApp.exceptions;
+
+public class resourceNotFoundException extends RuntimeException {
+
+	String rerourceName;
+	String fieldNmae;
+	Long fieldValue;
+	
+	public resourceNotFoundException (String rerourceName,String fieldNmae,Long fieldValue) {
+		super(String.format("% not found with % - %",rerourceName,fieldNmae,fieldValue))
+		
+		
+	}
+	
+	
+}

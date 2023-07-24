@@ -1,0 +1,70 @@
+package com.example.demoApp.servicesImpl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demoApp.entities.User;
+import com.example.demoApp.exceptions.resourceNotFoundException;
+import com.example.demoApp.repositories.UserRepo;
+import com.example.demoApp.services.UserService;
+
+@Service
+public class UserServiceImpl implements UserService {
+
+	@Autowired
+	private UserRepo userRepo;
+	
+//------------------------------------------------------------	
+
+	@Override
+	public User createUser(User user) {
+
+		User userSaved = this.userRepo.save(user);
+
+		return userSaved;
+	}
+
+	@Override
+	public User updateUser(User user, Long userId) {
+
+		User user2 = this.userRepo.findById(userId)
+				.orElseThrow(() -> new resourceNotFoundException("user", "user id", userId));
+		user2.setuName(user.getuName());
+		user2.setuMail(user.getuMail());
+		user2.setuGender(user.getuGender());
+
+		User updatedUser = this.userRepo.save(user2);
+
+		return updatedUser;
+	}
+
+	@Override
+	public User findUser(Long userId) {
+
+		User user = this.userRepo.findById(userId)
+				.orElseThrow(() -> new resourceNotFoundException("user", "user id", userId));
+
+		return user;
+	}
+
+	@Override
+	public List<User> findAllUsers() {
+
+		List<User> allUsers = this.userRepo.findAll();
+		
+		return allUsers;
+	}
+
+	@Override
+	public void deleteUser(Long userId) {
+
+		User user = this.userRepo.findById(userId)
+				.orElseThrow(() -> new resourceNotFoundException("user", "user id", userId));
+
+		this.userRepo.delete(user);
+		
+	}
+
+}

@@ -1,0 +1,22 @@
+package a_logicalPrograms;
+
+public class NumberRelated {
+
+	 void countOddNo () {
+		
+		int num=2890;
+		int odd=0;
+		int even=0;
+		int sum=0;
+		
+		
+		while (num / 10 >0)
+		{
+			int lastDigit=num%10;
+			
+			System.out.println(lastDigit);
+			
+		}
+		
+	}
+}

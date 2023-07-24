@@ -1,0 +1,49 @@
+package com.example.demoAppservicesImpl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.example.demoApp.entities.User;
+import com.example.demoApp.repositories.UserRepo;
+import com.example.demoApp.services.UserService;
+
+public class UserServiceImpl implements UserService {
+
+	@Autowired
+	UserRepo userRepo;
+	
+	
+	@Override
+	public User createUser(User user) {
+
+		User userSaved =this.userRepo.save(user);
+		return userSaved;
+	}
+
+	@Override
+	public User updateUser(User user, Long userId) {
+
+		User userInDb=this.userRepo.findById(userId).orElseThrow(new resourceNotFoundException());
+		return null;
+	}
+
+	@Override
+	public User findUser(Long userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<User> findAllUsers() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deleteUser(Long userId) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

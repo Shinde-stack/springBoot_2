@@ -1,0 +1,52 @@
+package com.example.demoApp.entities;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+
+@Entity
+@Table(name="userInfo")
+public class User {
+
+	Long uId;
+	String uName;
+	String uMail;
+	String uGender;
+	public Long getuId() {
+		return uId;
+	}
+	public void setuId(Long uId) {
+		this.uId = uId;
+	}
+	public String getuName() {
+		return uName;
+	}
+	public void setuName(String uName) {
+		this.uName = uName;
+	}
+	public String getuMail() {
+		return uMail;
+	}
+	public void setuMail(String uMail) {
+		this.uMail = uMail;
+	}
+	public String getuGender() {
+		return uGender;
+	}
+	public void setuGender(String uGender) {
+		this.uGender = uGender;
+	}
+	
+	
+	
+	
+	
+}
